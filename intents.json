@@ -1,0 +1,232 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening", "Is anyone there?"],
+      "responses": ["Hello, how can I assist you today?", "Hi! I'm here to help with your health concerns."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you later", "Talk to you soon"],
+      "responses": ["Take care!", "Goodbye! Stay healthy!", "Wishing you wellness."]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Much appreciated"],
+      "responses": ["Happy to help!", "You're welcome!", "Anytime!"]
+    },
+
+    
+    {
+      "tag": "depression_symptoms",
+      "patterns": [
+        "What are the symptoms of depression?",
+        "How do I know if I have depression?",
+        "Signs of depression?",
+        "I feel sad all the time"
+      ],
+      "responses": [
+        "Common symptoms of depression include persistent sadness, loss of interest in activities, fatigue, changes in sleep or appetite, and feelings of hopelessness."
+      ]
+    },
+    {
+      "tag": "depression_coping",
+      "patterns": [
+        "How to deal with depression?",
+        "Coping strategies for depression",
+        "What can I do if I feel depressed?"
+      ],
+      "responses": [
+        "Some coping strategies include regular exercise, maintaining a routine, talking to someone you trust, journaling, and seeking professional help."
+      ]
+    },
+    {
+      "tag": "depression_professional_help",
+      "patterns": [
+        "Should I see a therapist for depression?",
+        "When to see a doctor for depression?",
+        "Can therapy help with depression?"
+      ],
+      "responses": [
+        "Yes, therapy can be very helpful for managing depression. Cognitive Behavioral Therapy (CBT) and counseling are common treatment methods. Please consider reaching out to a licensed mental health professional."
+      ]
+    },
+
+    {
+      "tag": "anxiety_symptoms",
+      "patterns": [
+        "What are the symptoms of anxiety?",
+        "How do I know if I have anxiety?",
+        "I feel nervous all the time",
+        "Signs of anxiety?"
+      ],
+      "responses": [
+        "Symptoms of anxiety can include excessive worry, restlessness, rapid heartbeat, trouble concentrating, and sleep difficulties."
+      ]
+    },
+    {
+      "tag": "anxiety_relief",
+      "patterns": [
+        "How to reduce anxiety?",
+        "Ways to calm anxiety",
+        "Coping with anxiety"
+      ],
+      "responses": [
+        "Deep breathing exercises, mindfulness meditation, physical activity, and reducing caffeine can help with anxiety. It's also important to talk to someone you trust or a professional."
+      ]
+    },
+    {
+      "tag": "anxiety_help",
+      "patterns": [
+        "Should I take medication for anxiety?",
+        "Can therapy help anxiety?",
+        "Do I need professional help for anxiety?"
+      ],
+      "responses": [
+        "Depending on the severity, therapy and/or medication may help. Please consult a mental health professional for proper guidance."
+      ]
+    },
+
+    
+    {
+      "tag": "motivation",
+      "patterns": [
+        "I feel like giving up",
+        "I can't do this anymore",
+        "Motivate me",
+        "I'm tired of everything"
+      ],
+      "responses": [
+        "You're stronger than you think. Take it one step at a time.",
+        "Every day is a new chance. You’ve got this.",
+        "It’s okay to feel low. But don’t forget—you matter. Keep going."
+      ]
+    },
+
+    
+    {
+      "tag": "cold_fever_remedy",
+      "patterns": [
+        "What to do for cold and fever?",
+        "I have a sore throat and fever",
+        "Any medicine for common cold?",
+        "fever"
+      ],
+      "responses": [
+        "For mild cold and fever, rest, drink fluids, and consider paracetamol. If symptoms persist for more than 2-3 days, consult a doctor."
+      ]
+    },
+    {
+      "tag": "headache_remedy",
+      "patterns": [
+        "What to do for headache?",
+        "I have a severe headache",
+        "Any remedy for migraine?"
+      ],
+      "responses": [
+        "Stay hydrated, rest in a dark quiet room, and try a pain reliever like paracetamol. If it's recurring or severe, please see a doctor."
+      ]
+    },
+    {
+      "tag": "general_health_checkup",
+      "patterns": [
+        "Should I go for a health checkup?",
+        "What tests should I do regularly?",
+        "Routine health checkup?"
+      ],
+      "responses": [
+        "A general health checkup may include blood tests, blood pressure, sugar levels, and BMI. It's good to get checked annually or as advised by your physician."
+      ]
+    },
+
+
+    {
+      "tag": "mood_check",
+      "patterns": [
+        "How's my mood?",
+        "Check my mood",
+        "Am I okay?",
+        "I feel different today"
+      ],
+      "responses": [
+        "It's important to check in with yourself. How are you feeling right now? Would you like to talk about it?"
+      ]
+    },
+    {
+      "tag": "mood_check",
+      "patterns": [
+        "I'm feeling low",
+        "I don't feel good",
+        "I'm not okay",
+        "Can you check my mood?"
+      ],
+      "responses": [
+        "I'm here to talk. You're not alone. Would you like to talk about what's bothering you?",
+        "It's okay to feel down sometimes. Let's take a deep breath together."
+      ]
+    },
+    {
+      "tag": "daily_health_tip",
+      "patterns": [
+        "Give me a health tip",
+        "Daily health advice",
+        "Any wellness tips?",
+        "How can I stay healthy?"
+      ],
+      "responses": [
+        "Drink plenty of water, get enough sleep, and take a 30-minute walk daily for both mental and physical health.",
+        "Start your day with a short meditation and a glass of warm water. It works wonders!",
+        "Stay consistent with your sleep, eat balanced meals, and give yourself screen-free breaks."
+      ]
+    },
+    {
+      "tag": "emergency_help",
+      "patterns": [
+        "I feel like hurting myself",
+        "I want to die",
+        "I'm not okay",
+        "I need help urgently"
+      ],
+      "responses": [
+        "I'm really sorry you're feeling this way. Please consider talking to someone right away. You can call a mental health helpline or contact a trusted person.",
+        "You're not alone. I strongly urge you to reach out to a professional or call emergency services.",
+        "Your life matters. Please get immediate help by calling a local support line or visiting the nearest hospital."
+      ]
+    },
+    {
+      "tag": "self_care",
+      "patterns": [
+        "What is self-care?",
+        "How to practice self-care?",
+        "Self-care tips"
+      ],
+      "responses": [
+        "Self-care includes activities that promote physical, mental, and emotional well-being. This can be as simple as taking a walk, reading a book, or spending time with loved ones."
+      ]
+    },
+    {
+      "tag": "how_are_you_mental",
+      "patterns": [
+        "Can we talk?",
+        "Can I share something?",
+        "I just want someone to listen"
+      ],
+      "responses": [
+        "Of course, I’m here to listen—no judgment.",
+        "Go ahead, I’m listening. Say whatever you feel.",
+        "Yes, I’m right here. What’s on your mind?"
+      ]
+    },
+    {
+      "tag": "how_are_you_physical",
+      "patterns": [
+        "How's my physical health?",
+        "Am I fit?",
+        "Check my physical health"
+      ],
+      "responses": [
+        "Physical health is important. Regular exercise, a balanced diet, and enough sleep are key. How do you feel physically today?"
+      ]
+    }    
+  ]
+}

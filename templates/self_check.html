@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Health Self Check</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: url("{{ url_for('static', filename='image1.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150%;
+      height: 250%;
+      z-index: 0;
+    }
+
+    .center-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      z-index: 1;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 50px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      color: #ffffff;
+      max-width: 700px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #typing-text {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      letter-spacing: 1px;
+      min-height: 80px;
+    }
+
+    .button {
+      padding: 16px 36px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .button:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    .logout-inside {
+      margin-top: 40px;
+    }
+
+    .logout-inside .button {
+      padding: 8px 24px;
+      font-size: 14px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.15);     
+      box-shadow: none;
+    }
+
+    .logout-inside .button:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      #typing-text {
+        font-size: 24px;
+      }
+
+      .button {
+        padding: 14px 28px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Main Centered Card -->
+  <div class="center-wrapper">
+    <div class="card animate__animated animate__fadeInDown">
+      <h1 id="typing-text"></h1>
+      <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+        <a href="/self_check" class="button">Start Self Check</a>
+        <a href="/chatbot" class="button">Chatbot</a>
+      </div>
+
+      <!-- Logout Button at Bottom Inside -->
+      <div class="logout-inside">
+        <a href="/logout" class="button">Log out</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typing Effect Script -->
+  <script>
+    const text = "Self Identify Your Mental Health Status & Get Support Using ML";
+    let i = 0;
+    const speed = 50;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    window.onload = typeWriter;
+  </script>
+
+  <!-- Particle.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 120 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.95,
+          random: true,
+          anim: { enable: true, speed: 0.8, opacity_min: 0.6, sync: false }
+        },
+        size: {
+          value: 3.5,
+          random: true,
+          anim: { enable: false }
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 }
+        }
+      },
+      retina_detect: true
+    });
+    
+  </script>
+</body>
+</html>

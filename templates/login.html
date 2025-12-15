@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Mental Health Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #8fd3f4, #84fab0);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+
+    .floating-bubble {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .floating-bubble:nth-child(2) { top: 10%; left: 15%; animation-delay: 0s; }
+    .floating-bubble:nth-child(3) { top: 60%; left: 70%; animation-delay: 3s; }
+    .floating-bubble:nth-child(4) { top: 30%; left: 80%; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 45px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 40px rgba(0,0,0,0.2);
+      width: 450px;
+      text-align: center;
+      transition: transform 0.3s;
+      will-change: transform;
+      z-index: 2;
+      position: relative;
+    }
+
+    .container:hover {
+      transform: perspective(600px) rotateY(5deg) rotateX(5deg);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #000000;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    input {
+      width: 85%;
+      padding: 16px 18px;
+      margin: 12px 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 14px;
+      background-color: #f9f9f9;
+      color: #222;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06), inset 0 1px 2px rgba(255,255,255,0.5);
+    }
+
+    input::placeholder {
+      color: #aaa;
+      font-weight: 400;
+    }
+
+    input:focus {
+      background-color: #fff;
+      border: 2px solid #66a6ff;
+      box-shadow: 0 0 0 4px rgba(102, 166, 255, 0.15);
+      outline: none;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #888;
+    }
+
+    button {
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px rgba(102, 166, 255, 0.6);
+      transform: scale(1.08);
+    }
+
+    a {
+      color: #fd6e01;
+      display: block;
+      margin-top: 15px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <!-- Bubbles -->
+  <div class="floating-bubble"></div>
+  <div class="floating-bubble"></div>
+  <div class="floating-bubble"></div>
+
+  <!-- Login Container -->
+  <div class="container">
+    <h2>Welcome Back</h2>
+    <p>Log in to continue your self-check journey</p>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Username" required />
+
+      <div class="input-wrapper">
+        <input type="password" name="password" placeholder="Password" id="password" required />
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit">Log In</button>
+    </form>
+    <a href="/signup">Don't have an account? Sign up</a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 }},
+        "color": { "value": "#111111" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.7 },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 130,
+          "color": "#111111",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.2,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 180,
+            "line_linked": { "opacity": 0.5 }
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    function togglePassword() {
+      const passField = document.getElementById("password");
+      passField.type = passField.type === "password" ? "text" : "password";
+    }
+
+    // Confetti trigger if login was successful
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("login") === "success") {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+
+</body>
+</html>

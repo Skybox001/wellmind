@@ -1,0 +1,5 @@
+activate the venv: venv/Scripts/activate
+then run command in terminal --> python app.py
+predefined user login:
+admin
+123456

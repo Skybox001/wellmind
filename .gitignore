@@ -1,0 +1,39 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+# Machine Learning Models (too large for GitHub)
+*.pkl
+*.pth
+*.h5
+*.model
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+# Media Files (too large)
+*.mp4
+*.webm
+*.avi
+*.mov
+# Database
+*.db
+*.sqlite
+*.sqlite3
+# Environment Variables
+.env
+.env.local
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+# Logs
+*.log

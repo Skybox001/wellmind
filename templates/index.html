@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Health Status Prediction</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      z-index: -1;
+    }
+
+    body {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-top: 30px;
+      color: #00cfff;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: #00bfff;
+    }
+
+    p {
+      font-size: 22px;
+      color: #ff8080;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 35px;
+      border-radius: 20px;
+      background: rgba(0, 76, 128, 0.35);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      max-width: 1200px;
+      width: 90%;
+      box-shadow: 0 12px 40px rgba(0, 0, 80, 0.5);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-size: 16px;
+      color: #e0f7ff;
+    }
+
+    select, input[type="text"], input[type="number"] {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    select option, input::placeholder {
+      color: #000;
+    }
+
+    .gender-group {
+      grid-column: 2 / 3;
+    }
+
+    button[type="submit"] {
+      grid-column: span 3;
+      padding: 14px;
+      background-color: #00bfff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #009edf;
+      transform: scale(1.03);
+    }
+
+    .result-box, .guidance-box {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 15px;
+      background: rgba(0, 0, 64, 0.5);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .result-box h2, .guidance-box h2 {
+      color: #00e1ff;
+      margin-bottom: 10px;
+    }
+
+    .result-box p, .guidance-box p {
+      font-size: 20px;
+      color: #f0faff;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle background -->
+  <div id="particles-js"></div>
+
+  <h1>Mental Health Status Prediction</h1>
+  <div class="container">
+    <form action="/predict_mental_status" method="post">
+      <div class="form-group">
+        <label for="Education">Education:</label>
+        <select name="Education" required>
+          <option value="1">Completed Masters</option>
+          <option value="2">Completed Phd</option>
+          <option value="3">Completed Undergraduate</option>
+          <option value="4">High School</option>
+          <option value="5">Some highschool</option>
+          <option value="6">Some Phd</option>
+          <option value="7">Some Undergraduate</option>
+          <option value="8">Some Masters</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Computer">Do you have a computer?</label>
+        <select name="Computer" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Hospitalized">Have you been hospitalized?</label>
+        <select name="Hospitalized" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="legally_disabled">Are you legally disabled?</label>
+        <select name="legally_disabled" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="live_with_parents">Do you live with your parents?</label>
+        <select name="live_with_parents" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="gap_in_resume">Do you have a gap in your resume?</label>
+        <select name="gap_in_resume" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Annual_income">Annual income:</label>
+        <input type="number" name="Annual_income" value="25" required>
+      </div>
+
+      <div class="form-group">
+        <label for="unemployed">Are you currently unemployed?</label>
+        <select name="unemployed" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Lack_of_concentration">Do you suffer from a lack of concentration?</label>
+        <select name="Lack_of_concentration" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Anxiety">Do you suffer from anxiety?</label>
+        <select name="Anxiety" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Depression">Do you suffer from depression?</label>
+        <select name="Depression" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Obsessive thinking">Do you suffer from obsessive thinking?</label>
+        <select name="Obsessive thinking" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Panic attacks">Do you suffer from panic attacks?</label>
+        <select name="Panic attacks" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Compulsive behavior">Do you have compulsive behavior?</label>
+        <select name="Compulsive behavior" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Age">Age:</label>
+        <input type="number" name="Age" value="35" required>
+      </div>
+
+      <div class="form-group gender-group">
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+      </div>
+
+      <button type="submit">Predict</button>
+    </form>
+  </div>
+
+  {% if result_message %}
+  <div class="result-box">
+    <h2>Prediction Result:</h2>
+    <p>{{ result_message }}</p>
+  </div>
+  {% endif %}
+
+  {% if guidance_message %}
+  <div class="guidance-box">
+    <h2>Guidance:</h2>
+    <p>{{ guidance_message }}</p>
+  </div>
+  {% endif %}
+
+  {%  if show_whatsapp_call %}
+  <a href="https://wa.me/917571068452?call" target="_blank" style="color:green; font-weight: bold;">
+    Call for support on Whatsapp
+  </a>
+  <br><br>
+  <a href="https://wa.me/917571068452?text={{'Hello Doctor,I have Completed the test and would like to get your assitance based on my result .Please assist me' | urlencode }}" target="_blank" style="color:blue; font-weight: bold;">
+    Send Whatsapp Message to Doctor for Guidance
+ </a>
+ <p style="font-size: small; color: gray;">
+  If your call is not answered, you can send messages to the doctor for guidance.
+ </p>
+{% endif%}
+
+  <!-- Load particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>

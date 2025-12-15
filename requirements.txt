@@ -1,0 +1,8 @@
+flask
+numpy
+pandas
+joblib
+mysql-connector-python
+scikit-learn
+torch
+nltk
