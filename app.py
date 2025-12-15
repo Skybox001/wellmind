@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify,redirect, url_for, session, flash
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
+import os
 import numpy as np
 import pandas as pd
 import joblib
@@ -8,7 +9,14 @@ import mysql.connector
 from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
-app.secret_key = '757106'
+# Don't commit secrets: override in your environment (.env) for local development.
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
+
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = int(os.getenv("DB_PORT", "3306"))
+DB_USER = os.getenv("DB_USER", "root")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "")
+DB_NAME = os.getenv("DB_NAME", "chatbot")
 
 # Load the trained SVM model
 svm_model = joblib.load('svm_model.pkl')
@@ -32,10 +40,11 @@ def provide_guidance(prediction):
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Rawat@1234",
-        database="chatbot"
+        host=DB_HOST,
+        port=DB_PORT,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME,
     )
 
 @app.route('/signup', methods=['GET', 'POST'])

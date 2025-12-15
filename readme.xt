@@ -1,5 +1,6 @@
-activate the venv: venv/Scripts/activate
-then run command in terminal --> python app.py
+activate the venv: .venv/Scripts/activate
+(optional) create a .env file with DB settings (see .env.example)
+then run command in terminal --> python run_project.py
 predefined user login:
 admin
 123456
