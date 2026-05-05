@@ -33,7 +33,7 @@ def provide_guidance(prediction):
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
-        user="root",
+        user="chatbot_user",
         password="Rawat@1234",
         database="chatbot"
     )
