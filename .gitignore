@@ -14,6 +14,9 @@ __pycache__/
 *.pth
 *.h5
 *.model
+# Required small model artifacts tracked for this project
+!svm_model.pkl
+!data.pth
 # IDE
 .vscode/
 .idea/
