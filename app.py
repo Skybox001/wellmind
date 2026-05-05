@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
-import os
+from flask import Flask, render_template, request, jsonify,redirect, url_for, session, flash
 import numpy as np
 import pandas as pd
 import joblib
@@ -9,14 +8,7 @@ import mysql.connector
 from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
-# Don't commit secrets: override in your environment (.env) for local development.
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
-
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = int(os.getenv("DB_PORT", "3306"))
-DB_USER = os.getenv("DB_USER", "root")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "")
-DB_NAME = os.getenv("DB_NAME", "chatbot")
+app.secret_key = '757106'
 
 # Load the trained SVM model
 svm_model = joblib.load('svm_model.pkl')
@@ -40,11 +32,10 @@ def provide_guidance(prediction):
 
 def get_db_connection():
     return mysql.connector.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        database=DB_NAME,
+        host="localhost",
+        user="root",
+        password="Celab@9766",
+        database="chatbot"
     )
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -53,18 +44,22 @@ def signup():
         username = request.form['username']
         password = request.form['password']
 
-        conn = get_db_connection()
-        cursor = conn.cursor()
         try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
             conn.commit()
             flash("Signup successful, please login.")
             return redirect(url_for('login'))
-        except:
+        except mysql.connector.Error as err:
+            flash(f"Database error: {err}")
+        except Exception as e:
             flash("Username already exists.")
         finally:
-            cursor.close()
-            conn.close()
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
+            if 'conn' in locals() and conn.is_connected():
+                conn.close()
 
     return render_template('signup.html')
 
@@ -74,19 +69,24 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
-        user = cursor.fetchone()
-        cursor.close()
-        conn.close()
-
-        if user:
-            session['username'] = username
-            return redirect(url_for('home'))
-
-        else:
-            flash("Invalid credentials.")
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
+            user = cursor.fetchone()
+            
+            if user:
+                session['username'] = username
+                return redirect(url_for('home'))
+            else:
+                flash("Invalid credentials.")
+        except mysql.connector.Error as err:
+            flash(f"Database error: {err}")
+        finally:
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
+            if 'conn' in locals() and conn.is_connected():
+                conn.close()
     return render_template('login.html')
 
 @app.route('/logout')

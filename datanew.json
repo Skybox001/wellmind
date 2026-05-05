@@ -1,0 +1,15 @@
+{
+  "intents": [
+    {
+      "tag": "example_new_intent",
+      "patterns": [
+        "This is an example pattern",
+        "Add your new actual data here"
+      ],
+      "responses": [
+        "This is an example response.",
+        "Add more responses here."
+      ]
+    }
+  ]
+}

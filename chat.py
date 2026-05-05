@@ -40,10 +40,14 @@ def get_response(msg):
 
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
-    if prob.item() > 0.75:
-        for intent in intents['intents']:
-            if tag == intent["tag"]:
-                return random.choice(intent['responses'])
+    
+    # If the model recognizes 0 words, or confidence is low, fallback.
+    if X.sum().item() == 0 or prob.item() <= 0.75:
+        return "I do not understand..."
+        
+    for intent in intents['intents']:
+        if tag == intent["tag"]:
+            return random.choice(intent['responses'])
     
     return "I do not understand..."
 
