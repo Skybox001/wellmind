@@ -2,28 +2,60 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening", "Is anyone there?"],
-      "responses": ["Hello, how can I assist you today?", "Hi! I'm here to help with your health concerns."]
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "How are you?",
+        "What up?"
+      ],
+      "responses": [
+        "Hello! I am here to help with your mental health and wellness. How can I assist you today?",
+        "Hi! Welcome. I am your mental health companion. What would you like to talk about?",
+        "Hey there! I am here to listen and help. What is on your mind?"
+      ]
     },
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "Goodbye", "See you later", "Talk to you soon"],
-      "responses": ["Take care!", "Goodbye! Stay healthy!", "Wishing you wellness."]
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you",
+        "Talk to you later",
+        "I am leaving",
+        "Take care"
+      ],
+      "responses": [
+        "Goodbye! Remember, taking care of your mental health is important. Take care!",
+        "See you later! Do not hesitate to come back if you need support.",
+        "Take care of yourself. You matter!"
+      ]
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "Much appreciated"],
-      "responses": ["Happy to help!", "You're welcome!", "Anytime!"]
+      "patterns": [
+        "Thank you",
+        "Thanks",
+        "Appreciate it",
+        "That helps",
+        "Thank you so much"
+      ],
+      "responses": [
+        "You are welcome! I am always here to help.",
+        "Glad I could assist! Take care.",
+        "Anytime! Remember, seeking help is a sign of strength."
+      ]
     },
-
-    
     {
       "tag": "depression_symptoms",
       "patterns": [
-        "What are the symptoms of depression?",
-        "How do I know if I have depression?",
-        "Signs of depression?",
-        "I feel sad all the time"
+        "What are symptoms of depression?",
+        "Signs of depression",
+        "How do I know if I am depressed",
+        "Depression symptoms"
       ],
       "responses": [
         "Common symptoms of depression include persistent sadness, loss of interest in activities, fatigue, changes in sleep or appetite, and feelings of hopelessness."
@@ -51,7 +83,6 @@
         "Yes, therapy can be very helpful for managing depression. Cognitive Behavioral Therapy (CBT) and counseling are common treatment methods. Please consider reaching out to a licensed mental health professional."
       ]
     },
-
     {
       "tag": "anxiety_symptoms",
       "patterns": [
@@ -72,7 +103,7 @@
         "Coping with anxiety"
       ],
       "responses": [
-        "Deep breathing exercises, mindfulness meditation, physical activity, and reducing caffeine can help with anxiety. It's also important to talk to someone you trust or a professional."
+        "Deep breathing exercises, mindfulness meditation, physical activity, and reducing caffeine can help with anxiety. It is also important to talk to someone you trust or a professional."
       ]
     },
     {
@@ -83,27 +114,346 @@
         "Do I need professional help for anxiety?"
       ],
       "responses": [
-        "Depending on the severity, therapy and/or medication may help. Please consult a mental health professional for proper guidance."
+        "Depending on the severity, therapy and or medication may help. Please consult a mental health professional for proper guidance."
       ]
     },
-
-    
     {
       "tag": "motivation",
       "patterns": [
         "I feel like giving up",
-        "I can't do this anymore",
+        "I can not do this anymore",
         "Motivate me",
-        "I'm tired of everything"
+        "I am tired of everything"
       ],
       "responses": [
-        "You're stronger than you think. Take it one step at a time.",
-        "Every day is a new chance. You’ve got this.",
-        "It’s okay to feel low. But don’t forget—you matter. Keep going."
+        "You are stronger than you think. Take it one step at a time.",
+        "Every day is a new chance. You have got this.",
+        "It is okay to feel low. But do not forget—you matter. Keep going."
       ]
     },
-
-    
+    {
+      "tag": "sleep_issues",
+      "patterns": [
+        "I can not sleep",
+        "Insomnia",
+        "Trouble sleeping",
+        "How to sleep better",
+        "Sleep problems"
+      ],
+      "responses": [
+        "For better sleep, try maintaining a regular sleep schedule, avoiding screens before bed, creating a relaxing bedtime routine, and limiting caffeine. If sleep issues persist, consult a doctor."
+      ]
+    },
+    {
+      "tag": "stress_management",
+      "patterns": [
+        "I am stressed",
+        "How to manage stress",
+        "Stress relief",
+        "Too much stress"
+      ],
+      "responses": [
+        "Stress management techniques include deep breathing, regular exercise, time management, prioritizing tasks, and taking breaks. Mindfulness and meditation can also be very effective."
+      ]
+    },
+    {
+      "tag": "self_esteem",
+      "patterns": [
+        "Low self esteem",
+        "I do not feel good about myself",
+        "How to build confidence",
+        "Self confidence"
+      ],
+      "responses": [
+        "Building self esteem takes time. Practice positive self talk, celebrate small achievements, surround yourself with supportive people, and consider working with a therapist to address underlying issues."
+      ]
+    },
+    {
+      "tag": "grief",
+      "patterns": [
+        "I am grieving",
+        "Lost someone",
+        "Dealing with loss",
+        "Grief support"
+      ],
+      "responses": [
+        "Grief is a natural process. Allow yourself to feel your emotions, seek support from friends and family, consider joining a support group, and do not hesitate to seek professional help if needed."
+      ]
+    },
+    {
+      "tag": "addiction",
+      "patterns": [
+        "Addiction help",
+        "Substance abuse",
+        "I think I am addicted",
+        "Recovery support"
+      ],
+      "responses": [
+        "Recovery is possible. Consider reaching out to addiction specialists, joining support groups like AA or NA, and seeking professional treatment. You do not have to face this alone."
+      ]
+    },
+    {
+      "tag": "ptsd",
+      "patterns": [
+        "PTSD",
+        "Trauma",
+        "Post traumatic stress",
+        "Trauma recovery"
+      ],
+      "responses": [
+        "PTSD requires professional treatment. Therapies like EMDR and CBT can be very effective. Please seek help from a mental health professional who specializes in trauma."
+      ]
+    },
+    {
+      "tag": "bipolar",
+      "patterns": [
+        "Bipolar disorder",
+        "Mood swings",
+        "Manic depression"
+      ],
+      "responses": [
+        "Bipolar disorder is a treatable condition. It typically requires a combination of medication and therapy. Please consult a psychiatrist for proper diagnosis and treatment."
+      ]
+    },
+    {
+      "tag": "ocd",
+      "patterns": [
+        "OCD",
+        "Obsessive compulsive",
+        "Obsessions",
+        "Compulsions"
+      ],
+      "responses": [
+        "OCD can be effectively treated with therapy particularly Exposure and Response Prevention and medication. A mental health professional can help develop a personalized treatment plan."
+      ]
+    },
+    {
+      "tag": "adhd",
+      "patterns": [
+        "ADHD",
+        "Attention deficit",
+        "Can not focus",
+        "Hyperactivity"
+      ],
+      "responses": [
+        "ADHD can be managed with medication, therapy, and lifestyle changes. Consider consulting with a psychiatrist or psychologist for proper evaluation and treatment options."
+      ]
+    },
+    {
+      "tag": "social_anxiety",
+      "patterns": [
+        "Social anxiety",
+        "Fear of social situations",
+        "Shy",
+        "Social phobia"
+      ],
+      "responses": [
+        "Social anxiety is common and treatable. Therapy, particularly CBT, can be very helpful. Gradual exposure to social situations and practicing social skills can also improve confidence."
+      ]
+    },
+    {
+      "tag": "panic_attacks",
+      "patterns": [
+        "Panic attack",
+        "Panic disorder",
+        "Sudden fear",
+        "Heart racing"
+      ],
+      "responses": [
+        "During a panic attack, try deep breathing, grounding techniques, and remind yourself it will pass. Long term treatment may include therapy and medication. Consult a mental health professional."
+      ]
+    },
+    {
+      "tag": "mindfulness",
+      "patterns": [
+        "Mindfulness",
+        "Meditation",
+        "How to be mindful",
+        "Being present"
+      ],
+      "responses": [
+        "Mindfulness involves being present in the moment. Start with short meditation sessions, focus on your breath, practice mindful eating, and try to observe your thoughts without judgment."
+      ]
+    },
+    {
+      "tag": "nutrition_mental",
+      "patterns": [
+        "Food and mood",
+        "Nutrition for mental health",
+        "Diet and depression",
+        "Healthy eating"
+      ],
+      "responses": [
+        "A balanced diet rich in omega 3s, whole grains, fruits, and vegetables supports mental health. Limit processed foods and sugar. Consider consulting a nutritionist for personalized advice."
+      ]
+    },
+    {
+      "tag": "exercise_mental",
+      "patterns": [
+        "Exercise for mental health",
+        "Workout and mood",
+        "Physical activity"
+      ],
+      "responses": [
+        "Regular exercise releases endorphins and reduces stress. Aim for 30 minutes of moderate activity most days. Even walking, yoga, or dancing can significantly improve mental well being."
+      ]
+    },
+    {
+      "tag": "work_life_balance",
+      "patterns": [
+        "Work life balance",
+        "Burned out at work",
+        "Too much work",
+        "Career stress"
+      ],
+      "responses": [
+        "Set boundaries between work and personal time, take regular breaks, prioritize tasks, learn to say no, and make time for activities you enjoy. Your well being is more important than productivity."
+      ]
+    },
+    {
+      "tag": "loneliness",
+      "patterns": [
+        "I feel lonely",
+        "Lonely",
+        "No friends",
+        "Isolated"
+      ],
+      "responses": [
+        "Loneliness is difficult but you are not alone in feeling this way. Try joining clubs, volunteering, reaching out to old friends, or consider therapy. Building connections takes time but is worth it."
+      ]
+    },
+    {
+      "tag": "burnout",
+      "patterns": [
+        "Burnout",
+        "Exhausted",
+        "Can not keep going",
+        "Burned out"
+      ],
+      "responses": [
+        "Burnout requires rest and recovery. Take time off, set boundaries, seek support, and consider professional help. Your health is more important than any responsibility."
+      ]
+    },
+    {
+      "tag": "therapy_types",
+      "patterns": [
+        "Types of therapy",
+        "What therapy is best",
+        "CBT",
+        "Therapy options"
+      ],
+      "responses": [
+        "Common therapy types include CBT for changing negative thoughts, DBT for emotional regulation, psychodynamic for understanding past, and family therapy. A therapist can recommend the best approach for you."
+      ]
+    },
+    {
+      "tag": "medication",
+      "patterns": [
+        "Mental health medication",
+        "Antidepressants",
+        "Anxiety medication",
+        "Should I take meds"
+      ],
+      "responses": [
+        "Medication can be helpful for many mental health conditions. Only a psychiatrist can prescribe and monitor medication. Discuss benefits and side effects with your doctor."
+      ]
+    },
+    {
+      "tag": "support_groups",
+      "patterns": [
+        "Support groups",
+        "Find support",
+        "Group therapy",
+        "Peer support"
+      ],
+      "responses": [
+        "Support groups provide connection and understanding. Look for groups specific to your needs, either in person or online. Sharing experiences with others who understand can be very healing."
+      ]
+    },
+    {
+      "tag": "crisis_resources",
+      "patterns": [
+        "Crisis hotline",
+        "Emergency numbers",
+        "Suicide prevention",
+        "Need help now"
+      ],
+      "responses": [
+        "If you are in crisis, please call a helpline immediately. In many countries, you can call 988 or 112. Also consider going to the nearest emergency room. You do not have to face this alone."
+      ]
+    },
+    {
+      "tag": "teen_mental_health",
+      "patterns": [
+        "Teen mental health",
+        "Teenager depression",
+        "Adolescent anxiety",
+        "Teen stress"
+      ],
+      "responses": [
+        "Teen mental health is important. Encourage open communication, validate their feelings, limit social media pressure, and seek professional help if needed. Early intervention is key."
+      ]
+    },
+    {
+      "tag": "student_mental_health",
+      "patterns": [
+        "Student mental health",
+        "College stress",
+        "Exam anxiety",
+        "Academic pressure"
+      ],
+      "responses": [
+        "Student life can be stressful. Manage time effectively, get enough sleep, stay connected with friends, use campus mental health resources, and remember that your worth is not defined by grades."
+      ]
+    },
+    {
+      "tag": "financial_stress",
+      "patterns": [
+        "Financial stress",
+        "Money anxiety",
+        "Debt stress",
+        "Financial worries"
+      ],
+      "responses": [
+        "Financial stress is common and valid. Create a budget, seek financial counseling, focus on what you can control, and remember that money does not define your worth. Consider therapy if anxiety is overwhelming."
+      ]
+    },
+    {
+      "tag": "resilience",
+      "patterns": [
+        "Resilience",
+        "Building resilience",
+        "Bounce back",
+        "Mental strength"
+      ],
+      "responses": [
+        "Resilience can be built through maintaining connections, practicing self care, developing problem solving skills, and viewing challenges as opportunities for growth. It is a skill that develops over time."
+      ]
+    },
+    {
+      "tag": "emotional_intelligence",
+      "patterns": [
+        "Emotional intelligence",
+        "EQ",
+        "Understanding emotions",
+        "Emotional awareness"
+      ],
+      "responses": [
+        "Emotional intelligence involves recognizing, understanding, and managing emotions. Practice identifying your feelings, empathize with others, and develop healthy ways to express emotions."
+      ]
+    },
+    {
+      "tag": "positive_thinking",
+      "patterns": [
+        "Positive thinking",
+        "Positive mindset",
+        "Optimism",
+        "Negative thoughts"
+      ],
+      "responses": [
+        "Positive thinking does not mean ignoring reality. It means approaching challenges constructively. Challenge negative thoughts, practice gratitude, and surround yourself with positive influences."
+      ]
+    },
     {
       "tag": "cold_fever_remedy",
       "patterns": [
@@ -113,7 +463,7 @@
         "fever"
       ],
       "responses": [
-        "For mild cold and fever, rest, drink fluids, and consider paracetamol. If symptoms persist for more than 2-3 days, consult a doctor."
+        "For mild cold and fever, rest, drink fluids, and consider paracetamol. If symptoms persist for more than 2 3 days, consult a doctor."
       ]
     },
     {
@@ -124,7 +474,7 @@
         "Any remedy for migraine?"
       ],
       "responses": [
-        "Stay hydrated, rest in a dark quiet room, and try a pain reliever like paracetamol. If it's recurring or severe, please see a doctor."
+        "Stay hydrated, rest in a dark quiet room, and try a pain reliever like paracetamol. If it is recurring or severe, please see a doctor."
       ]
     },
     {
@@ -135,34 +485,32 @@
         "Routine health checkup?"
       ],
       "responses": [
-        "A general health checkup may include blood tests, blood pressure, sugar levels, and BMI. It's good to get checked annually or as advised by your physician."
+        "A general health checkup may include blood tests, blood pressure, sugar levels, and BMI. It is good to get checked annually or as advised by your physician."
       ]
     },
-
-
     {
       "tag": "mood_check",
       "patterns": [
-        "How's my mood?",
+        "How my mood?",
         "Check my mood",
         "Am I okay?",
         "I feel different today"
       ],
       "responses": [
-        "It's important to check in with yourself. How are you feeling right now? Would you like to talk about it?"
+        "It is important to check in with yourself. How are you feeling right now? Would you like to talk about it?"
       ]
     },
     {
       "tag": "mood_check",
       "patterns": [
-        "I'm feeling low",
-        "I don't feel good",
-        "I'm not okay",
+        "I am feeling low",
+        "I do not feel good",
+        "I am not okay",
         "Can you check my mood?"
       ],
       "responses": [
-        "I'm here to talk. You're not alone. Would you like to talk about what's bothering you?",
-        "It's okay to feel down sometimes. Let's take a deep breath together."
+        "I am here to talk. You are not alone. Would you like to talk about what is bothering you?",
+        "It is okay to feel down sometimes. Let us take a deep breath together."
       ]
     },
     {
@@ -174,9 +522,9 @@
         "How can I stay healthy?"
       ],
       "responses": [
-        "Drink plenty of water, get enough sleep, and take a 30-minute walk daily for both mental and physical health.",
+        "Drink plenty of water, get enough sleep, and take a 30 minute walk daily for both mental and physical health.",
         "Start your day with a short meditation and a glass of warm water. It works wonders!",
-        "Stay consistent with your sleep, eat balanced meals, and give yourself screen-free breaks."
+        "Stay consistent with your sleep, eat balanced meals, and give yourself screen free breaks."
       ]
     },
     {
@@ -184,24 +532,24 @@
       "patterns": [
         "I feel like hurting myself",
         "I want to die",
-        "I'm not okay",
+        "I am not okay",
         "I need help urgently"
       ],
       "responses": [
-        "I'm really sorry you're feeling this way. Please consider talking to someone right away. You can call a mental health helpline or contact a trusted person.",
-        "You're not alone. I strongly urge you to reach out to a professional or call emergency services.",
+        "I am really sorry you are feeling this way. Please consider talking to someone right away. You can call a mental health helpline or contact a trusted person.",
+        "You are not alone. I strongly urge you to reach out to a professional or call emergency services.",
         "Your life matters. Please get immediate help by calling a local support line or visiting the nearest hospital."
       ]
     },
     {
       "tag": "self_care",
       "patterns": [
-        "What is self-care?",
-        "How to practice self-care?",
-        "Self-care tips"
+        "What is self care?",
+        "How to practice self care?",
+        "Self care tips"
       ],
       "responses": [
-        "Self-care includes activities that promote physical, mental, and emotional well-being. This can be as simple as taking a walk, reading a book, or spending time with loved ones."
+        "Self care includes activities that promote physical, mental, and emotional well being. This can be as simple as taking a walk, reading a book, or spending time with loved ones."
       ]
     },
     {
@@ -212,21 +560,21 @@
         "I just want someone to listen"
       ],
       "responses": [
-        "Of course, I’m here to listen—no judgment.",
-        "Go ahead, I’m listening. Say whatever you feel.",
-        "Yes, I’m right here. What’s on your mind?"
+        "Of course, I am here to listen—no judgment.",
+        "Go ahead, I am listening. Say whatever you feel.",
+        "Yes, I am right here. What is on your mind?"
       ]
     },
     {
       "tag": "how_are_you_physical",
       "patterns": [
-        "How's my physical health?",
+        "How my physical health?",
         "Am I fit?",
         "Check my physical health"
       ],
       "responses": [
         "Physical health is important. Regular exercise, a balanced diet, and enough sleep are key. How do you feel physically today?"
       ]
-    }    
+    }
   ]
 }

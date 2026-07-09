@@ -50,22 +50,18 @@ def signup():
         username = request.form['username']
         password = request.form['password']
 
+        conn = get_db_connection()
+        cursor = conn.cursor()
         try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
             cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
             conn.commit()
             flash("Signup successful, please login.")
             return redirect(url_for('login'))
-        except mysql.connector.Error as err:
-            flash(f"Database error: {err}")
-        except Exception as e:
+        except:
             flash("Username already exists.")
         finally:
-            if 'cursor' in locals() and cursor is not None:
-                cursor.close()
-            if 'conn' in locals() and conn.is_connected():
-                conn.close()
+            cursor.close()
+            conn.close()
 
     return render_template('signup.html')
 
@@ -75,24 +71,19 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
-            user = cursor.fetchone()
-            
-            if user:
-                session['username'] = username
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid credentials.")
-        except mysql.connector.Error as err:
-            flash(f"Database error: {err}")
-        finally:
-            if 'cursor' in locals() and cursor is not None:
-                cursor.close()
-            if 'conn' in locals() and conn.is_connected():
-                conn.close()
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
+        user = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if user:
+            session['username'] = username
+            return redirect(url_for('home'))
+
+        else:
+            flash("Invalid credentials.")
     return render_template('login.html')
 
 @app.route('/logout')
