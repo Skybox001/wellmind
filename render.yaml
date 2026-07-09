@@ -1,0 +1,41 @@
+services:
+  # Web Service (Flask App)
+  - type: web
+    name: wellmind
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python -c 'import nltk; nltk.download(\"punkt\")'  "
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: DB_HOST
+        fromDatabase:
+          name: wellmind-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: wellmind-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: wellmind-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: wellmind-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: wellmind-db
+          property: database
+
+databases:
+  # MySQL Database
+  - name: wellmind-db
+    databaseName: chatbot
+    user: wellmind_user
+    plan: free

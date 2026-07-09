@@ -4,11 +4,16 @@ import pandas as pd
 import joblib
 from chat import get_response
 import mysql.connector
+import os
+from dotenv import load_dotenv
 
 from sklearn.preprocessing import LabelEncoder
 
+# Load environment variables
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = '757106'
+app.secret_key = os.getenv('FLASK_SECRET_KEY', '757106')
 
 # Load the trained SVM model
 svm_model = joblib.load('svm_model.pkl')
@@ -32,10 +37,11 @@ def provide_guidance(prediction):
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Celab@9766",
-        database="chatbot"
+        host=os.getenv('DB_HOST', 'localhost'),
+        port=int(os.getenv('DB_PORT', 3306)),
+        user=os.getenv('DB_USER', 'root'),
+        password=os.getenv('DB_PASSWORD'),
+        database=os.getenv('DB_NAME', 'chatbot')
     )
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -157,4 +163,5 @@ def predict_mental_status():
                            show_whatsapp_call=show_whatsapp_call)
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

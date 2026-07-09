@@ -6,3 +6,5 @@ mysql-connector-python
 scikit-learn
 torch
 nltk
+gunicorn
+python-dotenv
